@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Iqraly
+Exec=io.github.lexeep.Iqraly
+Icon=io.github.lexeep.Iqraly
+Terminal=false
+Type=Application
+Categories=Utility;
+Keywords=GTK;
+StartupNotify=true
+DBusActivatable=true

@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="Adw" version="1.0"/>
+  <template class="IqralyWindow" parent="AdwApplicationWindow">
+
+    <property name="width-request">360</property>
+    <property name="height-request">200</property>
+    <property name="default-width">800</property>
+    <property name="default-height">600</property>
+
+    <child>
+      <object class="AdwBreakpoint">
+        <condition>max-width: 400sp</condition>
+        <setter object="split_view" property="collapsed">true</setter>
+      </object>
+    </child>
+
+    <property name="content">
+
+      <object class="AdwOverlaySplitView" id="split_view">
+        <property name="show-sidebar">true</property>
+
+        <property name="sidebar">
+          <object class="AdwNavigationPage">
+            <property name="title" translatable="yes">Iqraly</property>
+            <property name="tag">sidebar</property>
+            <property name="child">
+              <object class="AdwToolbarView">
+                <child type="top">
+                  <object class="AdwHeaderBar">
+                    <property name="show-title">true</property>
+                    <child type="start">
+                      <object class="GtkToggleButton" id="search_button">
+                        <property name="icon-name">edit-find-symbolic</property>
+                      </object>
+                    </child>
+                    <child type="end">
+                      <object class="GtkMenuButton" id="primary">
+                        <property name="icon-name">open-menu-symbolic</property>
+                        <property name="menu-model">primary_menu</property>
+                        <property name="primary">true</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+
+                <child type="top">
+                  <object class="GtkSearchBar" id="searchbar">
+                    <property name="key-capture-widget">split_view</property>
+                    <property name="search-mode-enabled"
+                              bind-source="search_button"
+                              bind-property="active"
+                              bind-flags="sync-create|bidirectional"/>
+                    <child>
+                      <object class="GtkSearchEntry" id="searchentry">
+                        <property name="hexpand">true</property>
+                        <property name="search-delay">100</property>
+                        <property name="placeholder-text" translatable="yes">Search Surahs</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+
+
+                <property name="content">
+                  <object class="GtkStack" id="stack">
+                    <property name="transition-type">1</property>
+
+                    <!-- search list page -->
+                    <child>
+                      <object class="GtkScrolledWindow" id="search_page">
+                        <property name="vexpand">true</property>
+                        <child>
+                          <object class="GtkListBox" id="listbox">
+                            <property name="selection-mode">single</property>
+                            <style>
+                              <class name="navigation-sidebar"/>
+                              <class name="surah-list"/>
+                            </style>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+
+
+                    <!-- no search found page -->
+                    <child>
+                      <object class="AdwStatusPage" id="status_page">
+                        <property name="title" translatable="yes">No Results Founds</property>
+                        <property name="description" translatable="yes">Try a different search</property>
+                        <property name="icon-name">edit-find-symbolic</property>
+                        <property name="vexpand">true</property>
+                      </object>
+                    </child>
+                  </object>
+
+
+
+
+
+                </property>
+              </object>
+            </property>
+          </object>
+        </property>
+
+        <property name="content">
+          <object id="contentPage" class="AdwNavigationPage">
+            <property name="title" translatable="yes">Surah Name</property>
+            <property name="tag">content</property>
+            <property name="child">
+              <object class="AdwToolbarView">
+                <child type="top">
+                  <object class="AdwHeaderBar">
+                    <property name="show-title">true</property>
+                    <child type="start">
+                      <object class="GtkToggleButton" id="show_sidebar_button">
+                        <property name="icon-name">widget-split-views-symbolic</property>
+                        <property name="tooltip-text" translatable="yes">Toggle Sidebar</property>
+                        <property name="active"
+                                  bind-source="split_view"
+                                  bind-property="show-sidebar"
+                                  bind-flags="sync-create|bidirectional"/>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+
+                <property name="content">
+                  <object class="AdwStatusPage">
+                    <property name="title" translatable="yes">Content</property>
+                    <child>
+                      <object class="GtkLinkButton">
+                        <property name="label" translatable="yes">API Reference</property>
+                        <property name="uri">https://gnome.pages.gitlab.gnome.org/libadwaita/doc/1.6/class.NavigationSplitView.html</property>
+                      </object>
+                    </child>
+                  </object>
+                </property>
+              </object>
+            </property>
+          </object>
+        </property>
+
+      </object>
+    </property>
+  </template>
+
+  <menu id="primary_menu">
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">_Preferences</attribute>
+        <attribute name="action">app.preferences</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">_Keyboard Shortcuts</attribute>
+        <attribute name="action">app.shortcuts</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">_About Iqraly</attribute>
+        <attribute name="action">app.about</attribute>
+      </item>
+    </section>
+  </menu>
+</interface>
