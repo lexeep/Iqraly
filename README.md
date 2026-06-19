@@ -1,3 +1,8 @@
-# iqraly
+# Iqraly
 
-A description of this project.
+A Native Gnome Quran app
+
+# Credits
+
+quran.json from https://github.com/risan/quran-json
+
