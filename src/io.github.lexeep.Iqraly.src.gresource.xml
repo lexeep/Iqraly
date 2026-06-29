@@ -3,7 +3,8 @@
   <gresource prefix="/io/github/lexeep/Iqraly/js">
     <file>main.js</file>
     <file>window.js</file>
-    <file>quran.json</file>
     <file>style.css</file>
+
+
   </gresource>
 </gresources>

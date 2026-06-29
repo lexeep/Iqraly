@@ -4,4 +4,8 @@
     <file preprocess="xml-stripblanks">window.ui</file>
     <file preprocess="xml-stripblanks">shortcuts-dialog.ui</file>
   </gresource>
+
+  <gresource prefix="/io/github/lexeep/Iqraly/data">
+    <file alias="quran_en.json">../data/quran_en.json</file>
+  </gresource>
 </gresources>

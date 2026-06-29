@@ -33,7 +33,7 @@ export const IqralyWindow = GObject.registerClass({
 
 
         const bytes = Gio.resources_lookup_data(
-          '/io/github/lexeep/Iqraly/js/quran.json',
+          '/io/github/lexeep/Iqraly/data/quran_en.json',
           Gio.ResourceLookupFlags.NONE,
         );
 

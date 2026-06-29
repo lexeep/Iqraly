@@ -16,8 +16,7 @@
         "--socket=wayland"
     ],
     "build-options" : {
-        "append-path" : "/usr/lib/sdk/typescript/bin:/usr/lib/sdk/node20/bin",
-        "env" : {        }
+        "append-path" : "/usr/lib/sdk/typescript/bin:/usr/lib/sdk/node20/bin"
     },
     "cleanup" : [
         "/include",
@@ -40,9 +39,6 @@
                     "type" : "git",
                     "url" : "file:///home/aalmansoori/Documents/Projects"
                 }
-            ],
-            "config-opts" : [
-                "--libdir=lib"
             ]
         }
     ]
