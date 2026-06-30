@@ -80,6 +80,10 @@ export const IqralyWindow = GObject.registerClass({
             }
 
             label.set_label(`<b>${String(surah.id).padEnd(5)} ${surah.transliteration}</b>`);
+
+
+
+
             previousRow = row;
         });
 

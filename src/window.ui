@@ -107,7 +107,7 @@
 
         <property name="content">
           <object id="contentPage" class="AdwNavigationPage">
-            <property name="title" translatable="yes">Surah Name</property>
+            <property name="title" translatable="yes"></property>
             <property name="tag">content</property>
             <property name="child">
               <object class="AdwToolbarView">
@@ -124,13 +124,56 @@
                                   bind-flags="sync-create|bidirectional"/>
                       </object>
                     </child>
+
+                    <child type="start">
+                      <object class="GtkBox">
+                        <property name="spacing">6</property>
+
+                        <child>
+                                        <object class="GtkButton" id="go_back_button">
+                                    <property name="action-name">tab.go-back</property>
+                                    <property name="icon-name">go-previous-symbolic</property>
+                                    <property name="width-request">42</property>
+                                  </object>
+                        </child>
+
+                        <child>
+                                                                  <object class="GtkButton" id="go_forward_button">
+                                    <property name="action-name">tab.go-forward</property>
+                                    <property name="icon-name">go-next-symbolic</property>
+                                    <property name="width-request">42</property>
+                                  </object>
+                        </child>
+
+
+
+                      </object>
+                    </child>
+
+
+                    <child type="end">
+                      <object class="GtkButton" id="button_new_tab2">
+                        <property name="icon-name">tab-new-symbolic</property>
+                      </object>
+                    </child>
+
+                    <child type ="end">
+                      <object class="GtkButton" id="button_overview">
+                        <property name="icon-name">view-grid-symbolic</property>
+                      </object>
+                    </child>
                   </object>
                 </child>
 
+
+
+
                 <property name="content">
-                  <object class="AdwStatusPage">
+                  <object class="AdwStatusPage" id="welcome_page">
+                    <property name="icon-name">accessories-dictionary-symbolic</property>
                     <property name="title" translatable="yes">Content</property>
                     <child>
+
                       <object class="GtkLinkButton">
                         <property name="label" translatable="yes">API Reference</property>
                         <property name="uri">https://gnome.pages.gitlab.gnome.org/libadwaita/doc/1.6/class.NavigationSplitView.html</property>
