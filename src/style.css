@@ -1,6 +1,3 @@
-.surah-list {
-
-}
-
-.navigation-sidebar.surah-list row {
+tabbar.bordered-tabbar {
+  border-bottom: 1px solid @borders;
 }

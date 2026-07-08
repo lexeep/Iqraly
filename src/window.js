@@ -26,10 +26,67 @@ import Gio from 'gi://Gio';
 export const IqralyWindow = GObject.registerClass({
     GTypeName: 'IqralyWindow',
     Template: 'resource:///io/github/lexeep/Iqraly/window.ui',
-    InternalChildren: ['search_button','searchbar', 'searchentry', 'listbox', 'contentPage', 'stack', 'status_page', 'search_page'],
+    InternalChildren: [
+      'search_button','searchbar', 'searchentry', 'listbox',
+      'contentPage','stack', 'status_page', 'search_page',
+      'tab_view', 'button_new_tab', 'overview', 'button_overview',
+      'tab_bar'
+    ],
 }, class IqralyWindow extends Adw.ApplicationWindow {
     constructor(application) {
         super({ application });
+
+        console.log('Tab count:', this._tab_view.get_n_pages());
+        let tab_count = 1;
+
+        this._overview.connect("create-tab", () => {
+          console.log("Hello world!");
+          return add_page();
+          // add_page
+        });
+
+        this._button_overview.connect("clicked", () => {
+          this._overview.open = true;
+
+          // make it so side bar closes then reopens once tab is selected etc
+        });
+
+        this._button_new_tab.connect("clicked", () => {
+          add_page();
+        });
+
+        const add_page = () => {
+          const title = `Tab ${tab_count}`;
+          const page = create_page(title);
+          const tab_page = this._tab_view.append(page);
+          tab_page.title = title;
+          tab_page.live_thumbnail = true;
+
+          tab_count += 1;
+          return tab_page;
+        };
+
+        const create_page  = (title) => {
+          const page = new Adw.StatusPage({
+            title: title,
+            vexpand: true,
+          });
+          return page;
+        };
+
+        this._tab_bar.connect('notify::tabs-revealed', () => {
+          if (this._tab_bar.tabs_revealed) {
+            this._tab_bar.add_css_class('bordered-tabbar');
+          } else {
+            this._tab_bar.remove_css_class('bordered-tabbar');
+          }
+        });
+
+        // Set initial state on startup too
+        if (this._tab_bar.tabs_revealed) {
+          this._tab_bar.add_css_class('bordered-tabbar');
+        }
+
 
 
         const bytes = Gio.resources_lookup_data(
