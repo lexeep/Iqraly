@@ -5,9 +5,8 @@
 
 A Native Gnome Quran app
 
-![Screenshot](data/screenshots/screenshot.png)
+### Credits
 
-# Credits
-
-quran.json from https://github.com/risan/quran-json
+- ![quran-json](https://github.com/risan/quran-json) for the quran.json files
+- ![foliate](https://github.com/johnfactotum/foliate) for design inspiration
 
